@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+# Agents honor disallow rules. Add paths to block crawling.
