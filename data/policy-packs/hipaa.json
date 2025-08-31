@@ -1,0 +1,29 @@
+[
+  {
+    "id": "hipaa-email",
+    "name": "Mask PHI Emails",
+    "scope": {"domain": "*.hospital.example"},
+    "matchers": [{"type": "email"}],
+    "action": "mask",
+    "severity": "high",
+    "explain": "Email addresses may expose protected health information and must be masked."
+  },
+  {
+    "id": "hipaa-ssn",
+    "name": "Block Social Security Numbers",
+    "scope": {},
+    "matchers": [{"type": "ssn"}],
+    "action": "block",
+    "severity": "high",
+    "explain": "SSNs are considered PHI and should be blocked from transmission."
+  },
+  {
+    "id": "hipaa-mrn",
+    "name": "Mask Medical Record Numbers",
+    "scope": {},
+    "matchers": [{"type": "custom", "pattern": "\\bMRN\\s*\\d{6}\\b"}],
+    "action": "mask",
+    "severity": "medium",
+    "explain": "Medical record numbers must be masked to protect patient identity."
+  }
+]

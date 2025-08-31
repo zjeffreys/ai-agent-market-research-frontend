@@ -1,0 +1,35 @@
+name: CodeQL
+
+on:
+  pull_request:
+  schedule:
+    - cron: '0 0 * * 0'
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    env:
+      PUBLIC_SITE_URL: http://localhost:3000
+      VITE_SUPABASE_URL: https://example.supabase.co
+      VITE_SUPABASE_ANON_KEY: anon
+      SUPABASE_SERVICE_ROLE_KEY: role
+      VITE_SCRAPER_API_BASE_URL: https://api.example.com
+      OPENAI_API_KEY: key
+      LEAD_WEBHOOK_URL: https://example.com/webhook
+    steps:
+      - uses: actions/checkout@v4
+      - uses: github/codeql-action/init@v3
+        with:
+          languages: javascript
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          cache: 'npm'
+          cache-dependency-path: package-lock.json
+      - run: npm ci
+      - run: npm run env:check
+      - uses: github/codeql-action/analyze@v3

@@ -1,0 +1,18 @@
+# Development Dockerfile using Node LTS
+FROM node:lts
+
+# Create app directory
+WORKDIR /app
+
+# Install dependencies first to leverage Docker layer caching
+COPY package.json package-lock.json ./
+RUN npm ci
+
+# Copy the rest of the application code
+COPY . .
+
+# Expose the Next.js dev port
+EXPOSE 3000
+
+# Default command will be overridden by docker-compose for dev
+CMD ["npm", "run", "dev"]

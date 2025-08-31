@@ -1,0 +1,29 @@
+[
+  {
+    "id": "pci-card",
+    "name": "Block Credit Card Numbers",
+    "scope": {},
+    "matchers": [{"type": "cc"}],
+    "action": "block",
+    "severity": "high",
+    "explain": "Credit card numbers must never be stored or transmitted."
+  },
+  {
+    "id": "pci-cvv",
+    "name": "Block CVV Codes",
+    "scope": {},
+    "matchers": [{"type": "custom", "pattern": "\\b\\d{3,4}\\b"}],
+    "action": "block",
+    "severity": "high",
+    "explain": "CVV codes are sensitive authentication data and should be blocked."
+  },
+  {
+    "id": "pci-exp",
+    "name": "Mask Card Expiration Dates",
+    "scope": {},
+    "matchers": [{"type": "custom", "pattern": "\\b(0[1-9]|1[0-2])\\/\\d{2}\\b"}],
+    "action": "mask",
+    "severity": "medium",
+    "explain": "Expiration dates should be masked on receipts and logs."
+  }
+]

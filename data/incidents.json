@@ -1,0 +1,5 @@
+[
+  { "id": 1, "app": "ChatGPT", "entity": "SSN", "status": "blocked" },
+  { "id": 2, "app": "Slack", "entity": "CREDIT_CARD", "status": "masked" },
+  { "id": 3, "app": "Gmail", "entity": "EMAIL", "status": "approved" }
+]

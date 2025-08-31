@@ -1,0 +1,18 @@
+.badge-high {
+  background: #ef4444;
+  color: white;
+  padding: 0 0.25rem;
+  border-radius: 0.25rem;
+}
+.badge-medium {
+  background: #f59e0b;
+  color: white;
+  padding: 0 0.25rem;
+  border-radius: 0.25rem;
+}
+.badge-low {
+  background: #10b981;
+  color: white;
+  padding: 0 0.25rem;
+  border-radius: 0.25rem;
+}

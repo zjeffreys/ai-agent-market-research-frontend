@@ -1,0 +1,7 @@
+{
+  "plans": [
+    { "name": "Free", "price": "$0" },
+    { "name": "Team", "price": "$20/user/mo" },
+    { "name": "Enterprise", "price": "$100k/yr" }
+  ]
+}

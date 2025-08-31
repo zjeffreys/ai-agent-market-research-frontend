@@ -1,0 +1,29 @@
+[
+  {
+    "id": "gdpr-email",
+    "name": "Mask Email Addresses",
+    "scope": {"domain": "*.eu"},
+    "matchers": [{"type": "email"}],
+    "action": "mask",
+    "severity": "medium",
+    "explain": "Emails are personal data under GDPR and should be masked unless consented."
+  },
+  {
+    "id": "gdpr-phone",
+    "name": "Block EU Phone Numbers",
+    "scope": {"domain": "*.eu"},
+    "matchers": [{"type": "custom", "pattern": "\\+?\\d{2} ?\\d{4,14}"}],
+    "action": "block",
+    "severity": "high",
+    "explain": "Phone numbers require explicit consent for processing."
+  },
+  {
+    "id": "gdpr-address",
+    "name": "Mask Mailing Addresses",
+    "scope": {},
+    "matchers": [{"type": "custom", "pattern": "\\d+\\s+\\w+\\s+(Street|St|Ave|Avenue)"}],
+    "action": "mask",
+    "severity": "low",
+    "explain": "Physical addresses are personal data and should be masked."
+  }
+]

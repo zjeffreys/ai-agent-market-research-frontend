@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  sgai-web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - .data:/app/.data
+    command: npm run dev

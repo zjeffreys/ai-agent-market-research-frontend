@@ -1,0 +1,9 @@
+{
+  "seats": 100,
+  "promptsPerUserPerDay": 20,
+  "incidentRatePercent": 5,
+  "costPerIncident": 100,
+  "wagePerHour": 40,
+  "secondsSavedPerPrompt": 30,
+  "licenseCostPerSeatPerMonth": 25
+}

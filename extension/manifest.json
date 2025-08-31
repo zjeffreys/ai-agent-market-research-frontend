@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "SGAI",
+  "version": "0.1",
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "options_page": "options.html",
+  "content_scripts": [
+    {
+      "matches": ["*://chat.openai.com/*", "*://*.slack.com/*"],
+      "js": ["contentScript.js"]
+    }
+  ],
+  "permissions": ["storage", "activeTab"]
+}
