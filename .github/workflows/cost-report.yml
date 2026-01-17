@@ -1,0 +1,20 @@
+name: Weekly Cost Report
+
+on:
+  schedule:
+    - cron: '0 0 * * 0'
+
+jobs:
+  cost-report:
+    runs-on: ubuntu-latest
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          cache: 'npm'
+          cache-dependency-path: package-lock.json
+      - run: npm ci
+      - run: npm run cost-report

@@ -1,0 +1,39 @@
+{
+  "plans": [
+    {
+      "name": "Free",
+      "price": 0,
+      "features": [
+        "Basic market snapshots",
+        "Community support"
+      ]
+    },
+    {
+      "name": "Team",
+      "price": 49,
+      "features": [
+        "Unlimited searches",
+        "Team dashboards",
+        "Email support"
+      ]
+    },
+    {
+      "name": "Enterprise",
+      "price": 199,
+      "features": [
+        "Custom insights",
+        "SSO & advanced permissions",
+        "Dedicated success manager"
+      ]
+    },
+    {
+      "name": "API",
+      "price": 499,
+      "features": [
+        "Full API access",
+        "Usage analytics",
+        "Priority support"
+      ]
+    }
+  ]
+}

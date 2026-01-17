@@ -1,109 +1,134 @@
-# AI Agent Market Research Frontend
+# SGAI — SafeguardAI
+_The seatbelt for enterprise AI adoption._
 
-A React-based frontend for AI agent market research and chatbot management.
+SafeguardAI (SGAI) is a **Grammarly-style compliance layer** that detects and redacts **PII, PHI, and PCI data** in real time before prompts leave the organization, enabling safe AI adoption under **HIPAA, PCI, GDPR, and CCPA**.
 
-## Features
+---
 
-- **Chatbot Management**: Create, edit, and manage AI chatbots
-- **Business Integration**: Connect chatbots with business data
-- **Conversation History**: Track and view chatbot conversations
-- **Chatbot Sharing**: Share chatbots via direct links, embed codes, and QR codes
+## 🚀 Features
+- **Browser Extension (MV3)**: Works across ChatGPT, Claude, Copilot, Gmail, Slack, Salesforce, etc., with inline highlights and suggestions.
+- **Interactive Demo**: Redacts SSNs, credit cards, emails, and DOBs in real time with hover explanations.
+- **Compliance Dashboard**:
+  - 📊 KPIs (incidents, blocked %, masked %, top entities)
+  - 🔎 Incident drill-down with raw vs. sanitized payloads
+  - ⚖️ Policy builder (visual IF/THEN rules)
+  - ✅ Approval workflows and audit logs
+- **Sector-Specific Messaging**: Tailored pages for Healthcare, Finance, and Enterprise.
+- **Pricing & ROI Calculator**: Per-seat SaaS ($15–30/user), enterprise flat fee ($50k–250k/yr), and API usage ($0.01–0.05/doc) with breach cost estimates.
 
-## Chatbot Sharing Features
+---
 
-### Direct Link Sharing
-Users can share their chatbots using direct links in the format:
+## 🏗 Tech Stack
+- Next.js 14 (App Router) + TypeScript
+- Tailwind CSS + shadcn/ui + Framer Motion
+- Zustand state, React Hook Form + Zod validation
+- Lucide Icons
+- Vitest unit tests, Playwright E2E tests
+- Chrome Extension MV3 with shared React components
+
+---
+
+## 📂 Project Structure
 ```
-https://yourapp.com/chat/{chatbotId}
+/app
+/(marketing)/[icp]
+/(marketing)/install
+/(marketing)/pricing
+/(marketing)/roi
+/(demo)/demo
+/(console)/{dashboard,policies,approvals,settings}
+/components
+/data
+/lib
+/store
+/extension
+/tests
 ```
 
-### Embedding in Websites
-Chatbots can be embedded in external websites using iframe:
+---
 
-```html
-<iframe src="https://yourapp.com/embed/{chatbotId}" width="350" height="500" frameborder="0"></iframe>
-```
-
-Or using the embed script:
-
-```html
-<script src="https://yourapp.com/embed.js"></script>
-<script>
-  ChatbotEmbed.init('{chatbotId}', {
-    position: 'bottom-right',
-    theme: 'light',
-    width: 350,
-    height: 500
-  });
-</script>
-```
-
-### QR Code Sharing
-QR codes are automatically generated for easy mobile sharing.
-
-## Development
-
-### Prerequisites
-- Node.js (v16 or higher)
-- npm or yarn
-
-### Installation
+## 🧪 Local Development
 ```bash
+# Install deps
 npm install
-```
 
-### Environment Variables
-
-Create a `.env` file in the root directory with the following variables:
-
-```bash
-# API Configuration
-VITE_AGENTIAL_API=http://localhost:8000  # For local development
-# VITE_AGENTIAL_API=https://your-live-api.com  # For production
-
-# Legacy scraper API (used by useAnalysis hook)
-VITE_scraper_api_base_url=http://localhost:8000
-```
-
-### Running the Development Server
-```bash
+# Start dev server
 npm run dev
-```
 
-### Building for Production
-```bash
+# Run unit tests
+npm test
+
+# Run E2E tests
+npx playwright test
+
+# Build production app
 npm run build
+
+# Build Chrome extension (outputs to /extension/dist)
+npm run build:ext
+```
+Load the extension in Chrome by enabling Developer Mode at `chrome://extensions` and selecting `extension/dist`.
+
+### Mock Data & APIs
+- `/data/*.json` seeds incidents, policies, pricing, and ROI assumptions.
+- Mock API routes under `/api/mock/*`.
+- Demo redaction runs locally in-browser; no data leaves the device.
+
+---
+
+## 💾 Persistence
+The app uses a lightweight database adapter with two drivers:
+
+- **SQLite** (default): stores data in `.data/sgai.sqlite` with no external services.
+- **In-memory**: volatile fallback useful for tests or ephemeral environments.
+
+Switch drivers by setting `DB_DRIVER` in your environment. For SQLite, also set `DATABASE_URL`:
+
+```bash
+# .env
+DB_DRIVER=sqlite
+DATABASE_URL="file:.data/sgai.sqlite"
 ```
 
-## Project Structure
+Set `DB_DRIVER=memory` to disable persistence.
 
-```
-src/
-├── components/
-│   ├── chatbot/
-│   │   ├── ChatbotPreview.tsx      # Main chatbot interface
-│   │   ├── ConversationHistory.tsx  # Chat history viewer
-│   │   ├── EmbeddableChatbot.tsx   # Embeddable chatbot component
-│   │   └── SharingControls.tsx     # Sharing options UI
-│   └── ...
-├── pages/
-│   ├── Chatbots.tsx                # Main chatbots management page
-│   ├── PublicChatbot.tsx           # Public chatbot access page
-│   └── ...
-└── ...
-```
+---
 
-## API Endpoints
+## 📊 Market Positioning
+SGAI addresses the "Shadow AI" risk where employees unknowingly leak sensitive data into LLMs.
 
-- `GET /chat/{chatbotId}` - Public chatbot access
-- `GET /embed/{chatbotId}` - Embeddable chatbot interface
-- `POST /api/chat` - Chat message processing
+- 63% of ChatGPT inputs contain PII.
+- Companies like Samsung, Amazon, and Apple have banned AI tools over data leaks.
+- Regulators (HIPAA, PCI, GDPR) impose multi-million-dollar fines.
 
-## Technologies Used
+**Differentiators**
+- Employee-friendly UX (Grammarly-like highlights)
+- Bottom-up freemium adoption
+- Enterprise compliance depth (audit logs, SSO/SCIM, on-prem options)
 
-- React 18
-- TypeScript
-- Tailwind CSS
-- Supabase (Backend)
-- Lucide React (Icons)
-- React Router DOM
+---
+
+## 🗺 Further Reading
+- [Market Research & Feasibility Study](MARKET_RESEARCH.md)
+- [Pitch Deck Outline](PITCH_DECK.md)
+
+---
+
+## 👥 Team
+- Zach — CTO (AI/ML, full-stack engineering)
+- Mark — CPO (UX/product design)
+- Chris — COO (operations & compliance)
+- Bobby — CRO/BD (GTM & partnerships)
+
+---
+
+## 📜 License
+MIT (subject to change as enterprise features mature)
+
+## 🤝 Contributing
+We welcome PRs for new detectors, UI/UX polish, and tests.
+
+## 📬 Contact
+Website: safeguardai.dev (placeholder)
+
+Email: founders@safeguardai.dev

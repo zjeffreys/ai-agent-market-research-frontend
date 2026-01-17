@@ -1,0 +1,16 @@
+{
+  "approved": false,
+  "analysisId": "demo",
+  "blueprint": {
+    "companyOverview": "This is a mock blueprint pending approval.",
+    "keyOfferings": [],
+    "targetSegments": [],
+    "marketTrends": [],
+    "competitiveLandscape": [],
+    "opportunitiesForAI": [],
+    "techStack": [],
+    "dataRisks": [],
+    "actionPlan": [],
+    "teamAIReadiness": ""
+  }
+}

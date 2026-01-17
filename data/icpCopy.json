@@ -1,0 +1,5 @@
+{
+  "healthcare": { "cta": "Stop PHI leaking into copilots." },
+  "finance": { "cta": "Meet PCI without banning AI." },
+  "enterprise": { "cta": "Bottom-up guardrails employees like." }
+}
